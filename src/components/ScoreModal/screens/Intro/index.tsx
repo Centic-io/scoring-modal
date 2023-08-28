@@ -8,12 +8,11 @@ import { LoadingButton } from "@mui/lab";
 export default function Intro({ setScreen }: ScreenComponentProps) {
   const { disconnect } = useDisconnect();
   const { status } = useAccount();
-  console.log("🚀 ~ file: index.tsx:10 ~ Intro ~ status:", status);
   useEffect(() => {
     if (status === "connected") {
       disconnect();
     }
-  }, [disconnect]);
+  }, [disconnect, status]);
   return (
     <Box
       sx={{
