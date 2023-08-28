@@ -2,9 +2,11 @@ import { Box, Button, Link, Typography } from "@mui/material";
 import { CenticLogo } from "../../../../icon";
 import ScoreDisplay from "../../../ScoreDisplay";
 import { useScoringContext } from "../../../../context/PublicContext";
+import { useAccount } from "wagmi";
 
 export default function Result() {
   const { score, close } = useScoringContext();
+  const { address } = useAccount();
   return (
     <Box
       sx={{
@@ -40,7 +42,7 @@ export default function Result() {
       <Typography variant="body1" color={"text.secondary"}>
         Want to increase your credit score? try{" "}
         <Link
-          href="https://centic.io"
+          href={`https://centic.io/dashboard?entity=${address}&type=wallet`}
           target="_blank"
           rel="noreferrer"
           sx={(theme) => ({

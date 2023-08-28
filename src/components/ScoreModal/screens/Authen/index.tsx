@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import { CenticLogo } from "../../../../icon";
-import Steps from "../../Steps";
 import { ScreenComponentProps } from "../../type";
 import { useAccount } from "wagmi";
 import { useEffect } from "react";
@@ -37,15 +36,11 @@ export default function Authen({ setScreen }: ScreenComponentProps) {
       <Typography
         variant="body2"
         color={"text.secondary"}
-        pt={2}
+        my={3}
         textAlign={"center"}
       >
         Connect and provide the signature to prove your wallet ownership
       </Typography>
-      <Box sx={{ my: 3 }}>
-        <Steps active={1} />
-      </Box>
-
       <ConnectWalletButton />
     </Box>
   );
