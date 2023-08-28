@@ -55,5 +55,20 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Centic-io/scoring-modal.git"
+  },
+  "keywords": [
+    "centic",
+    "react"
+  ],
+  "author": "centic-team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Centic-io/scoring-modal/issues"
+  },
+  "homepage": "https://github.com/Centic-io/scoring-modal#readme"
 }

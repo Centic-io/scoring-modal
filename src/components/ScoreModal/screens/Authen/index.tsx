@@ -45,7 +45,6 @@ export default function Authen({ setScreen }: ScreenComponentProps) {
       <Box sx={{ my: 3 }}>
         <Steps active={1} />
       </Box>
-
       <ConnectWalletButton />
     </Box>
   );
