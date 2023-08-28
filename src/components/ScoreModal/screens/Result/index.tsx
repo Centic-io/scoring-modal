@@ -4,7 +4,7 @@ import ScoreDisplay from "../../../ScoreDisplay";
 import { useScoringContext } from "../../../../context/PublicContext";
 
 export default function Result() {
-  const { close, score } = useScoringContext();
+  const { score, close } = useScoringContext();
   return (
     <Box
       sx={{

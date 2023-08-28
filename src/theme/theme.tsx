@@ -133,5 +133,15 @@ export const themeOption: ThemeOptions = {
         },
       },
     },
+    MuiDialog: {
+      styleOverrides: {},
+      defaultProps: {
+        PaperProps: {
+          style: {
+            borderRadius: "16px",
+          },
+        },
+      },
+    },
   },
 };

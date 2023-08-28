@@ -23,7 +23,7 @@ export default function LocalAppContextProvider({
       const scoreResult = await calculateCustomScore(address, apiKey || "");
       setScore(scoreResult.score);
     } catch (error) {} // need handle
-  }, [apiKey, address, setScore]);
+  }, [apiKey, setScore, address]);
 
   const contextValue: AppContextType = useMemo(() => {
     return {

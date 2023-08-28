@@ -1,24 +1,19 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { CenticLogo } from "../../../../icon";
 import Steps from "../../Steps";
 import { ScreenComponentProps } from "../../type";
-import { useAccount, useConnect } from "wagmi";
-import { MetaMaskConnector } from "wagmi/connectors/metaMask";
+import { useAccount } from "wagmi";
 import { useEffect } from "react";
+import ConnectWalletButton from "../../../ConnectWalletButton";
 
 export default function Authen({ setScreen }: ScreenComponentProps) {
-  const { connect } = useConnect({
-    connector: new MetaMaskConnector(),
-  });
   const { address } = useAccount();
   useEffect(() => {
     if (address) {
       setScreen("verifySig");
     }
   }, [address, setScreen]);
-  const handleConnect = async () => {
-    await connect();
-  };
+
   return (
     <Box
       sx={{
@@ -50,14 +45,8 @@ export default function Authen({ setScreen }: ScreenComponentProps) {
       <Box sx={{ my: 3 }}>
         <Steps active={1} />
       </Box>
-      <Button
-        color="primary"
-        variant="contained"
-        fullWidth
-        onClick={handleConnect}
-      >
-        Connect
-      </Button>
+
+      <ConnectWalletButton />
     </Box>
   );
 }

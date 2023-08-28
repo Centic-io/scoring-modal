@@ -1,8 +1,19 @@
 import { Box, Button, Typography } from "@mui/material";
 import { CenticLogo } from "../../../../icon";
 import { ScreenComponentProps } from "../../type";
+import { useAccount, useDisconnect } from "wagmi";
+import { useEffect } from "react";
+import { LoadingButton } from "@mui/lab";
 
 export default function Intro({ setScreen }: ScreenComponentProps) {
+  const { disconnect } = useDisconnect();
+  const { status } = useAccount();
+  console.log("🚀 ~ file: index.tsx:10 ~ Intro ~ status:", status);
+  useEffect(() => {
+    if (status === "connected") {
+      disconnect();
+    }
+  }, [disconnect]);
   return (
     <Box
       sx={{
@@ -48,7 +59,8 @@ export default function Intro({ setScreen }: ScreenComponentProps) {
       <Button fullWidth variant="outlined" sx={{ mb: 2 }}>
         FAQ
       </Button>
-      <Button
+      <LoadingButton
+        loading={status !== "disconnected"}
         color="primary"
         variant="contained"
         fullWidth
@@ -57,7 +69,7 @@ export default function Intro({ setScreen }: ScreenComponentProps) {
         }}
       >
         Continue
-      </Button>
+      </LoadingButton>
     </Box>
   );
 }

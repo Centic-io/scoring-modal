@@ -3,7 +3,6 @@ import LocalAppContextProvider from "../AppContext";
 import AppTheme from "../../components/AppTheme";
 import ScoreModal from "../../components/ScoreModal";
 
-import { useDisconnect } from "wagmi";
 import WagmiConfigWraper from "../../components/wagmi/config";
 
 type PublicContextType = {
@@ -24,26 +23,25 @@ export default function ScoringContextProvider({
 }) {
   const [open, setOpen] = useState<boolean>(false);
   const [score, setScore] = useState<number | undefined>(undefined);
-  const { disconnect } = useDisconnect();
+
   const start = useCallback(() => {
     setOpen(true);
   }, []);
   const close = useCallback(() => {
-    disconnect();
     setOpen(false);
-  }, [disconnect]);
+  }, []);
   const contextValue = useMemo(() => {
     return { open, start, close, score };
   }, [open, start, close, score]);
   return (
     <PublicContext.Provider value={contextValue}>
-      <LocalAppContextProvider apiKey={apiKey} setScore={setScore}>
-        <WagmiConfigWraper>
+      <WagmiConfigWraper>
+        <LocalAppContextProvider apiKey={apiKey} setScore={setScore}>
           <AppTheme>
             <ScoreModal />
           </AppTheme>
-        </WagmiConfigWraper>
-      </LocalAppContextProvider>
+        </LocalAppContextProvider>
+      </WagmiConfigWraper>
       {children}
     </PublicContext.Provider>
   );

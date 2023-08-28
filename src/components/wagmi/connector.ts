@@ -1,4 +1,4 @@
-import { MetaMaskConnector } from "wagmi/dist/connectors/metaMask";
+import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 
 export const metamaskConnector = new MetaMaskConnector({
@@ -11,5 +11,10 @@ export const walletConnectConnector = new WalletConnectConnector({
   options: {
     projectId: "e798d9e6ae31f96eeb80c8396b17611b",
     showQrModal: true,
+    qrModalOptions: {
+      themeVariables: {
+        "--wcm-z-index": "1301",
+      },
+    },
   },
 });
