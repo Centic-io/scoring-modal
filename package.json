@@ -1,6 +1,6 @@
 {
   "name": "scoring-modal",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -39,5 +39,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "React modal for calculating custom wallet score.",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Centic-io/scoring-modal.git"
+  },
+  "keywords": [
+    "react",
+    "centic"
+  ],
+  "author": "centic-team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Centic-io/scoring-modal/issues"
+  },
+  "homepage": "https://github.com/Centic-io/scoring-modal#readme"
 }
