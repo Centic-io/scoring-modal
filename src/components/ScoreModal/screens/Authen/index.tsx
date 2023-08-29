@@ -42,9 +42,6 @@ export default function Authen({ setScreen }: ScreenComponentProps) {
       >
         Connect and provide the signature to prove your wallet ownership
       </Typography>
-      <Box sx={{ my: 3 }}>
-        <Steps active={1} />
-      </Box>
       <ConnectWalletButton />
     </Box>
   );

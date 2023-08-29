@@ -1,10 +1,11 @@
 import React, { useCallback, useMemo } from "react";
 import { calculateCustomScore } from "../../api";
-import { useAccount } from "wagmi";
+import { useAccount, useSignMessage } from "wagmi";
 
 type AppContextType = {
   // score: number;
   calculateScore: () => Promise<void>;
+  sign: () => Promise<void>;
 };
 
 const LocalAppContext = React.createContext<AppContextType>(null as any);
@@ -15,7 +16,7 @@ export default function LocalAppContextProvider({
   setScore,
 }: Props) {
   const { address } = useAccount();
-  console.log("🚀 ~ file: index.tsx:18 ~ address:", address);
+  const { data, error, isLoading, signMessage, variables } = useSignMessage();
   const calculateScore = useCallback(async () => {
     if (!address) {
       return;
@@ -25,12 +26,15 @@ export default function LocalAppContextProvider({
       setScore(scoreResult.score);
     } catch (error) {} // need handle
   }, [apiKey, setScore, address]);
-
+  const sign = useCallback(async () => {
+    await signMessage({ message: "Test 123" });
+  }, [signMessage]);
   const contextValue: AppContextType = useMemo(() => {
     return {
       calculateScore,
+      sign,
     };
-  }, [calculateScore]);
+  }, [calculateScore, sign]);
 
   return (
     <LocalAppContext.Provider value={contextValue}>

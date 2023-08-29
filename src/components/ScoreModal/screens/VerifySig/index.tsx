@@ -1,17 +1,41 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Steps from "../../Steps";
 import { ScreenComponentProps } from "../../type";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CenticLoading from "../../../CenticLoading";
+import { CenticLogo } from "../../../../icon";
+import { useAccount, useSignMessage } from "wagmi";
+import { recoverMessageAddress } from "viem";
 
 export default function VerifySig({ setScreen }: ScreenComponentProps) {
+  const { signMessage, isLoading, data, variables, error } = useSignMessage();
+  const { address } = useAccount();
+  const [success, setSuccess] = useState<boolean>(false);
+  const handleSignMessage = async () => {
+    try {
+      setSuccess(true);
+      signMessage({ message: "Test" });
+    } catch (error) {}
+  };
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setScreen("calculateScore");
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [setScreen]);
-
+    const verifySig = async () => {
+      if (error) {
+        console.log("err:", error);
+        setSuccess(false);
+        return;
+      }
+      if (variables?.message && data) {
+        const recoveredAddress = await recoverMessageAddress({
+          message: variables?.message,
+          signature: data,
+        });
+        if (recoveredAddress === address) {
+          setScreen("calculateScore");
+        }
+      }
+    };
+    verifySig();
+  }, [data, variables, error, address, setScreen]);
   return (
     <Box
       sx={{
@@ -22,22 +46,46 @@ export default function VerifySig({ setScreen }: ScreenComponentProps) {
         height: "100%",
       }}
     >
-      <CenticLoading showTitle={false} />
-      <Typography variant="h1" color={"text.primary"} mt={3}>
-        Verifying ownership
-      </Typography>
-
-      <Box sx={{ my: 3 }}>
-        <Steps active={1} />
-      </Box>
-      {/* <Button
-        color="primary"
-        variant="contained"
-        fullWidth
-        onClick={() => setScreen("verifySig")}
-      >
-        Connect
-      </Button> */}
+      {success ? (
+        <CenticLoading showTitle={false} />
+      ) : (
+        <CenticLogo
+          sx={{
+            width: "60px",
+            height: "60px",
+            mb: 3,
+          }}
+        />
+      )}
+      {success && (
+        <Typography variant="h1" color={"text.primary"} mt={3}>
+          Verifying ownership
+        </Typography>
+      )}
+      {success && (
+        <Box sx={{ my: 3 }}>
+          <Steps active={1} />
+        </Box>
+      )}
+      {!success && (
+        <>
+          <Typography variant="h1" color={"text.primary"} mt={3}>
+            Verify wallet ownership
+          </Typography>
+          <Typography
+            variant="body2"
+            color={"text.secondary"}
+            my={3}
+            textAlign={"center"}
+          >
+            Sign to prove your wallet ownership. This is free and will not
+            require a transaction.
+          </Typography>
+          <Button variant="contained" fullWidth onClick={handleSignMessage}>
+            Sign
+          </Button>
+        </>
+      )}
     </Box>
   );
 }

@@ -13,6 +13,7 @@ import { useScoringContext } from "../../context/PublicContext";
 export default function ScoreModal() {
   const { open, close } = useScoringContext();
   const [screen, setScreen] = useState<Screens>("intro");
+
   useEffect(() => {
     if (!open) {
       const timedReset = setTimeout(() => {
