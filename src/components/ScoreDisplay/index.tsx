@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { useMemo } from "react";
-import scoreIndicator5 from "../../assets/images/levels/poor.png";
-import scoreIndicator4 from "../../assets/images/levels/fair.png";
-import scoreIndicator3 from "../../assets/images/levels/good.png";
-import scoreIndicator2 from "../../assets/images/levels/very_good.png";
-import scoreIndicator1 from "../../assets/images/levels/exceptional.png";
+import scoreIndicator5 from "@centic-modal/assets/images/levels/poor.png";
+import scoreIndicator4 from "@centic-modal/assets/images/levels/fair.png";
+import scoreIndicator3 from "@centic-modal/assets/images/levels/good.png";
+import scoreIndicator2 from "@centic-modal/assets/images/levels/very_good.png";
+import scoreIndicator1 from "@centic-modal/assets/images/levels/exceptional.png";
 
 type Props = {
   score: number;
