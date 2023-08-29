@@ -10,9 +10,7 @@
 
 # production
 /build
-/dist
-/public
-centic-io-scoring-modal*
+dist
 # misc
 .DS_Store
 .env.local
