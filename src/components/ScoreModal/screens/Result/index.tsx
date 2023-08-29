@@ -24,13 +24,12 @@ export default function Result() {
           mb: 3,
         }}
       />
-      {score && (
+      {score !== 0 && (
         <>
           <Typography variant="h1" color={"text.primary"}>
             Your Credit score
           </Typography>
           <ScoreDisplay score={score || 0} />
-
           <Typography
             variant="body1"
             color={"text.info"}
@@ -59,20 +58,10 @@ export default function Result() {
           </Typography>
         </>
       )}
-      {!score && (
+      {score === 0 && (
         <Box>
-          <Typography
-            id="centic-modal-text-display"
-            variant="h2"
-            my={2}
-            textAlign={"center"}
-            sx={{
-              transition: "all linear .3s",
-              transform: "translate(0px, -50px)",
-              opacity: 0,
-            }}
-          >
-            There was an error happened
+          <Typography variant="h1" color={"red"} my={3} textAlign={"center"}>
+            There was an error happened calculating your score
           </Typography>
         </Box>
       )}

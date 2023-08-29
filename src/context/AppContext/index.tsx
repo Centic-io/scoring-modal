@@ -24,10 +24,12 @@ export default function LocalAppContextProvider({
     try {
       const scoreResult = await calculateCustomScore(address, apiKey || "");
       setScore(scoreResult.score || 0);
-    } catch (error) {} // need handle
+    } catch (error) {
+      setScore(0);
+    } // need handle
   }, [apiKey, setScore, address]);
   const sign = useCallback(async () => {
-    await signMessage({ message: "Test 123" });
+    signMessage({ message: "Test 123" });
   }, [signMessage]);
   const contextValue: AppContextType = useMemo(() => {
     return {

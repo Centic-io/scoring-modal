@@ -68,19 +68,14 @@ export default function ScoreDisplay({ score, text }: Props) {
       {scoreConfig && (
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            ":hover": {
-              "& #centic-modal-score-display": {
-                transform: "rotateX(90deg)  translate(0px, 35px)",
-                opacity: 0,
-              },
-              "& #centic-modal-text-display": {
-                transform: "  translate(0px, 0px)",
-                opacity: 1,
-              },
-            },
+            position: "absolute",
+            width: "0px",
+            height: "0px",
+            top: "50%",
+            left: "50%",
+            boxShadow: `0px 0px 50px 35px ${scoreConfig?.color}`,
+            borderRadius: "50%",
+            zIndex: 0,
           }}
         >
           <Box
