@@ -142,7 +142,7 @@ export default function ScoreDisplay({ score, text }: Props) {
             height: "0px",
             top: "50%",
             left: "50%",
-            boxShadow: `0px 0px 50px 35px ${scoreConfig!.color}`,
+            boxShadow: `0px 0px 50px 35px ${scoreConfig?.color}`,
             borderRadius: "50%",
             zIndex: 0,
           }}

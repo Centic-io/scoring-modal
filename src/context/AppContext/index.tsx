@@ -16,15 +16,17 @@ export default function LocalAppContextProvider({
   setScore,
 }: Props) {
   const { address } = useAccount();
-  const { data, error, isLoading, signMessage, variables } = useSignMessage();
+  const { signMessage } = useSignMessage();
   const calculateScore = useCallback(async () => {
     if (!address) {
       return;
     }
     try {
       const scoreResult = await calculateCustomScore(address, apiKey || "");
-      setScore(scoreResult.score);
-    } catch (error) {} // need handle
+      setScore(scoreResult.score || 0);
+    } catch (error) {
+      setScore(0);
+    } // need handle
   }, [apiKey, setScore, address]);
   const sign = useCallback(async () => {
     await signMessage({ message: "Test 123" });

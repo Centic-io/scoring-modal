@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <ScoringContextProvider apiKey="40488c11127726bd.05bca825dea9663791cf8f15413f6859">
+    <ScoringContextProvider apiKey="40488c11127.05bca825dea9663791cf8f15413f6859">
       <App />
     </ScoringContextProvider>
   </React.StrictMode>
