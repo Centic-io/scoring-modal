@@ -1,5 +1,5 @@
 import { Box, Typography, TypographyProps } from "@mui/material";
-import centicLoadingGif from "@centic-modal/assets/images/centic_loading.gif";
+import centicLoadingGif from "../../assets/images/centic_loading.gif";
 
 export default function CenticLoading({
   size = 76,

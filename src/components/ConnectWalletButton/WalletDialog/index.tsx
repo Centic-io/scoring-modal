@@ -1,11 +1,11 @@
 import { Box, Grid, Typography } from "@mui/material";
-import metamaskIcon from "@centic-modal/assets/images/wallets/metamask.png";
-import walletConnectIcon from "@centic-modal/assets/images/wallets/walletconnect.png";
+import metamaskIcon from "../../../assets/images/wallets/metamask.png";
+import walletConnectIcon from "../../../assets/images/wallets/walletconnect.png";
 import { Connector, useConnect } from "wagmi";
 import {
   metamaskConnector,
   walletConnectConnector,
-} from "@centic-modal/components/wagmi/connector";
+} from "../../wagmi/connector";
 
 type walletConfig = {
   icon?: string;

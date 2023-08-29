@@ -15,6 +15,7 @@ export default function LocalAppContextProvider({
   setScore,
 }: Props) {
   const { address } = useAccount();
+  console.log("🚀 ~ file: index.tsx:18 ~ address:", address);
   const calculateScore = useCallback(async () => {
     if (!address) {
       return;

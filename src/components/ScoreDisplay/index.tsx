@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { useMemo } from "react";
-import scoreIndicator5 from "@centic-modal/assets/images/levels/poor.png";
-import scoreIndicator4 from "@centic-modal/assets/images/levels/fair.png";
-import scoreIndicator3 from "@centic-modal/assets/images/levels/good.png";
-import scoreIndicator2 from "@centic-modal/assets/images/levels/very_good.png";
-import scoreIndicator1 from "@centic-modal/assets/images/levels/exceptional.png";
+import scoreIndicator5 from "../../assets/images/levels/poor.png";
+import scoreIndicator4 from "../../assets/images/levels/fair.png";
+import scoreIndicator3 from "../../assets/images/levels/good.png";
+import scoreIndicator2 from "../../assets/images/levels/very_good.png";
+import scoreIndicator1 from "../../assets/images/levels/exceptional.png";
 
 type Props = {
   score: number;
@@ -142,7 +142,7 @@ export default function ScoreDisplay({ score, text }: Props) {
             height: "0px",
             top: "50%",
             left: "50%",
-            boxShadow: `0px 0px 50px 35px ${scoreConfig!.color}`,
+            boxShadow: `0px 0px 50px 35px ${scoreConfig?.color}`,
             borderRadius: "50%",
             zIndex: 0,
           }}

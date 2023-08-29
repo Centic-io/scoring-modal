@@ -1,14 +1,15 @@
-import resolve from "@rollup/plugin-node-resolve";
+import resolve, { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
 import dts from "rollup-plugin-dts";
-
+import image from "@rollup/plugin-image";
 import packageJson from "./package.json" assert { type: "json" };
+import nodePolyfills from "rollup-plugin-node-polyfills";
 
 export default [
   {
-    input: "index.tsx",
+    input: "src/index.ts",
     output: [
       {
         file: packageJson.main,
@@ -24,15 +25,17 @@ export default [
       },
     ],
     plugins: [
-      resolve(),
+      nodePolyfills({ crypto: true }),
+      // resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       json(),
+      image(),
     ],
   },
   {
     input: "dist/esm/types/index.d.ts",
-    output: [{ dir: "dist/index.d.ts", format: "cjs" }],
+    output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
   },
 ];

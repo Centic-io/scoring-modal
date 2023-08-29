@@ -5,7 +5,7 @@ import ScoreModal from "../../components/ScoreModal";
 
 import WagmiConfigWraper from "../../components/wagmi/config";
 
-type PublicContextType = {
+export type PublicContextType = {
   open: boolean;
   start: () => void;
   close: () => void;
