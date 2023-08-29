@@ -151,23 +151,6 @@ export default function ScoreDisplay({ score, text }: Props) {
           </Box>
         </Box>
       )}
-      {!scoreConfig && (
-        <Box>
-          <Typography
-            id="centic-modal-text-display"
-            variant="h2"
-            my={2}
-            textAlign={"center"}
-            sx={{
-              transition: "all linear .3s",
-              transform: "translate(0px, -50px)",
-              opacity: 0,
-            }}
-          >
-            There was an error happened
-          </Typography>
-        </Box>
-      )}
     </>
   );
 }

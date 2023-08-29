@@ -24,37 +24,58 @@ export default function Result() {
           mb: 3,
         }}
       />
-      <Typography variant="h1" color={"text.primary"}>
-        Your Credit score
-      </Typography>
-      <ScoreDisplay score={score || 0} />
+      {score && (
+        <>
+          <Typography variant="h1" color={"text.primary"}>
+            Your Credit score
+          </Typography>
+          <ScoreDisplay score={score || 0} />
 
-      <Typography
-        variant="body1"
-        color={"text.info"}
-        textAlign={"center"}
-        my={3}
-      >
-        Your credit score has been successfully calculated and shared to the
-        third party app.
-      </Typography>
+          <Typography
+            variant="body1"
+            color={"text.info"}
+            textAlign={"center"}
+            my={3}
+          >
+            Your credit score has been successfully calculated and shared to the
+            third party app.
+          </Typography>
 
-      <Typography variant="body1" color={"text.secondary"}>
-        Want to increase your credit score? try{" "}
-        <Link
-          href={`https://centic.io/dashboard?entity=${address}&type=wallet`}
-          target="_blank"
-          rel="noreferrer"
-          sx={(theme) => ({
-            display: "inline-block",
-            fontWeight: 600,
-            textDecoration: "none",
-            color: theme.palette.text.link,
-          })}
-        >
-          centic.io
-        </Link>
-      </Typography>
+          <Typography variant="body1" color={"text.secondary"}>
+            Want to increase your credit score? try{" "}
+            <Link
+              href={`https://centic.io/dashboard?entity=${address}&type=wallet`}
+              target="_blank"
+              rel="noreferrer"
+              sx={(theme) => ({
+                display: "inline-block",
+                fontWeight: 600,
+                textDecoration: "none",
+                color: theme.palette.text.link,
+              })}
+            >
+              centic.io
+            </Link>
+          </Typography>
+        </>
+      )}
+      {!score && (
+        <Box>
+          <Typography
+            id="centic-modal-text-display"
+            variant="h2"
+            my={2}
+            textAlign={"center"}
+            sx={{
+              transition: "all linear .3s",
+              transform: "translate(0px, -50px)",
+              opacity: 0,
+            }}
+          >
+            There was an error happened
+          </Typography>
+        </Box>
+      )}
       <Button
         color="primary"
         variant="contained"
