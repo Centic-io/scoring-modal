@@ -26,7 +26,7 @@ export default function LocalAppContextProvider({
       setScore(scoreResult.score || 0);
     } catch (error) {
       setScore(0);
-    } // need handle
+    }
   }, [apiKey, setScore, address]);
   const sign = useCallback(async () => {
     signMessage({ message: "Test 123" });
