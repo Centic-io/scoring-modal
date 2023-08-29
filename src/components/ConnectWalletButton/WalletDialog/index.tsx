@@ -72,9 +72,7 @@ function WalletItem({ icon, name, connector }: walletConfig) {
   const handleConnect = () => {
     try {
       connect();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
   return (
     <Box

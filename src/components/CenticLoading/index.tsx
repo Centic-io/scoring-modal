@@ -1,5 +1,5 @@
 import { Box, Typography, TypographyProps } from "@mui/material";
-import CenticLoadingGif from "../../assets/images/centic_loading.gif";
+import centicLoadingGif from "../../assets/images/centic_loading.gif";
 
 export default function CenticLoading({
   size = 76,
@@ -25,7 +25,7 @@ export default function CenticLoading({
         },
       }}
     >
-      <img src={CenticLoadingGif} alt="centic loading animation" />
+      <img src={centicLoadingGif} alt="centic loading animation" />
       {showTitle && (
         <Typography
           fontWeight={500}

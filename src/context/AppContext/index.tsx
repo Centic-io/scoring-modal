@@ -29,7 +29,7 @@ export default function LocalAppContextProvider({
     } // need handle
   }, [apiKey, setScore, address]);
   const sign = useCallback(async () => {
-    await signMessage({ message: "Test 123" });
+    signMessage({ message: "Test 123" });
   }, [signMessage]);
   const contextValue: AppContextType = useMemo(() => {
     return {

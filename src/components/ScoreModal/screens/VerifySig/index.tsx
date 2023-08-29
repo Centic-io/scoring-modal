@@ -14,7 +14,12 @@ export default function VerifySig({ setScreen }: ScreenComponentProps) {
   const handleSignMessage = async () => {
     try {
       setSuccess(true);
-      signMessage({ message: "Test" });
+      signMessage({
+        message:
+          `This is Centic team.` +
+          "\n\n" +
+          "Note: Sign to prove your wallet ownership. This is free and will not require a transaction.",
+      });
     } catch (error) {}
   };
   useEffect(() => {

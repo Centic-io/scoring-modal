@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { CenticLogo } from "../../../../icon";
+import Steps from "../../Steps";
 import { ScreenComponentProps } from "../../type";
 import { useAccount } from "wagmi";
 import { useEffect } from "react";
