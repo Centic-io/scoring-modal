@@ -19,7 +19,7 @@ export const getWalletScoreConfig = (
   score: number
 ): scoreConfig | undefined => {
   if (score < 300 || score > 850) {
-    return undefined;
+    return;
   }
   if (score <= 579) {
     return {
@@ -64,8 +64,77 @@ export default function ScoreDisplay({ score, text }: Props) {
     return config;
   }, [score]);
   return (
-    <>
-      {scoreConfig && (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        ":hover": {
+          "& #centic-modal-score-display": {
+            transform: "rotateX(90deg)  translate(0px, 35px)",
+            opacity: 0,
+          },
+          "& #centic-modal-text-display": {
+            transform: "  translate(0px, 0px)",
+            opacity: 1,
+          },
+        },
+      }}
+    >
+      <Box
+        sx={{
+          height: "58px",
+
+          overflowY: "hidden",
+        }}
+      >
+        <Typography
+          id="centic-modal-text-display"
+          variant="h2"
+          my={2}
+          color={scoreConfig?.color}
+          textAlign={"center"}
+          sx={{
+            transition: "all linear .3s",
+            transform: "translate(0px, -50px)",
+            opacity: 0,
+          }}
+        >
+          {scoreConfig?.text}
+        </Typography>
+        <Typography
+          id="centic-modal-score-display"
+          variant="h2"
+          my={2}
+          color={scoreConfig?.color}
+          textAlign={"center"}
+          sx={{
+            transition: "all linear .3s",
+            transform: "translate(0px, -35px)",
+            opacity: 1,
+          }}
+        >
+          {score}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          position: "relative",
+          zIndex: 0,
+        }}
+      >
+        {scoreConfig && (
+          <img
+            src={scoreConfig.image}
+            style={{
+              width: "240px",
+              height: "80px",
+              position: "relative",
+              zIndex: 2,
+            }}
+            alt="centic-score-display"
+          />
+        )}
         <Box
           sx={{
             position: "absolute",
@@ -77,75 +146,8 @@ export default function ScoreDisplay({ score, text }: Props) {
             borderRadius: "50%",
             zIndex: 0,
           }}
-        >
-          <Box
-            sx={{
-              height: "58px",
-              overflowY: "hidden",
-            }}
-          >
-            <Typography
-              id="centic-modal-text-display"
-              variant="h2"
-              my={2}
-              color={scoreConfig?.color}
-              textAlign={"center"}
-              sx={{
-                transition: "all linear .3s",
-                transform: "translate(0px, -50px)",
-                opacity: 0,
-              }}
-            >
-              {scoreConfig?.text}
-            </Typography>
-            <Typography
-              id="centic-modal-score-display"
-              variant="h2"
-              my={2}
-              color={scoreConfig?.color}
-              textAlign={"center"}
-              sx={{
-                transition: "all linear .3s",
-                transform: "translate(0px, -35px)",
-                opacity: 1,
-              }}
-            >
-              {score}
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              position: "relative",
-              zIndex: 0,
-            }}
-          >
-            {scoreConfig && (
-              <img
-                src={scoreConfig.image}
-                style={{
-                  width: "240px",
-                  height: "80px",
-                  position: "relative",
-                  zIndex: 2,
-                }}
-                alt="centic-score-display"
-              />
-            )}
-            <Box
-              sx={{
-                position: "absolute",
-                width: "0px",
-                height: "0px",
-                top: "50%",
-                left: "50%",
-                boxShadow: `0px 0px 50px 35px ${scoreConfig?.color}`,
-                borderRadius: "50%",
-                zIndex: 0,
-              }}
-            ></Box>
-          </Box>
-        </Box>
-      )}
-    </>
+        ></Box>
+      </Box>
+    </Box>
   );
 }
