@@ -37,7 +37,7 @@ export default function Authen({ setScreen }: ScreenComponentProps) {
       <Typography
         variant="body2"
         color={"text.secondary"}
-        pt={2}
+        my={3}
         textAlign={"center"}
       >
         Connect and provide the signature to prove your wallet ownership
