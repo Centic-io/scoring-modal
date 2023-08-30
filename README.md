@@ -13,8 +13,8 @@ Wrap your app inside **ScoringContextProvider** with the api key created.
 
     import { ScoringContextProvider } from  "@centic-io/scoring-modal";
     
-    export const App = () => { 
-	return (
+    export const App = () => {
+    	return (
 		<ScoringContextProvider  apiKey="your api key">
 			<YourApp />
 		</ScoringContextProvider>
