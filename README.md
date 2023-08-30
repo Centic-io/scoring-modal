@@ -15,7 +15,7 @@ Wrap your app inside **ScoringContextProvider** with the api key created.
     
     export const App = () => {
     	return (
-		<ScoringContextProvider  apiKey="your api key">
+     		<ScoringContextProvider  apiKey="your api key">
 			<YourApp />
 		</ScoringContextProvider>
 	  );
