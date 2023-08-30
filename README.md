@@ -26,7 +26,7 @@ The score calculator model can be invoked by calling the *start()* function prov
 
     import  React, { useEffect } from  "react";
     import { useScoringContext } from  "@centic-io/scoring-modal";
-
+    
 	function  Page() {
 		const { start, score } =  useScoringContext();
 		useEffect(() => {
