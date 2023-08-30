@@ -2,7 +2,6 @@
   "name": "@centic-io/scoring-modal",
   "version": "1.0.0",
   "description": "React modal for calculating custom wallet score.",
-  "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
