@@ -10,6 +10,7 @@ React modal for calculating custom wallet score.
 ### Setup the Scoring context
 
 Wrap your app inside **ScoringContextProvider** with the api key created.
+API Key can be created [here](https://console.centic.io)
 
     import { ScoringContextProvider } from  "@centic-io/scoring-modal";
     
