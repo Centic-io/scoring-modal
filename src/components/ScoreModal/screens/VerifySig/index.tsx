@@ -9,10 +9,12 @@ import { recoverMessageAddress } from "viem";
 
 export default function VerifySig({ setScreen }: ScreenComponentProps) {
   const { signMessage, isLoading, data, variables, error } = useSignMessage();
+  const [errorText, setErrorText] = useState<string>("");
   const { address } = useAccount();
   const [success, setSuccess] = useState<boolean>(false);
   const handleSignMessage = async () => {
     try {
+      setErrorText("");
       setSuccess(true);
       signMessage({
         message:
@@ -36,6 +38,8 @@ export default function VerifySig({ setScreen }: ScreenComponentProps) {
         });
         if (recoveredAddress === address) {
           setScreen("calculateScore");
+        } else {
+          setErrorText("Invalid signature");
         }
       }
     };
@@ -86,6 +90,16 @@ export default function VerifySig({ setScreen }: ScreenComponentProps) {
             Sign to prove your wallet ownership. This is free and will not
             require any transaction.
           </Typography>
+          {errorText && (
+            <Typography
+              variant="body2"
+              color={"text.secondary"}
+              my={3}
+              textAlign={"center"}
+            >
+              {errorText}
+            </Typography>
+          )}
           <Button variant="contained" fullWidth onClick={handleSignMessage}>
             Sign
           </Button>
