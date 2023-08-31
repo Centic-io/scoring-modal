@@ -84,7 +84,7 @@ export default function VerifySig({ setScreen }: ScreenComponentProps) {
             textAlign={"center"}
           >
             Sign to prove your wallet ownership. This is free and will not
-            require a transaction.
+            require any transaction.
           </Typography>
           <Button variant="contained" fullWidth onClick={handleSignMessage}>
             Sign

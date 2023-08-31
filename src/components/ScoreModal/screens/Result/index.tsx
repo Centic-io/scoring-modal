@@ -41,7 +41,7 @@ export default function Result() {
           </Typography>
 
           <Typography variant="body1" color={"text.secondary"}>
-            Want to increase your credit score? try{" "}
+            Wanna improve your credit score? Let's try out{" "}
             <Link
               href={`https://centic.io/dashboard?entity=${address}&type=wallet`}
               target="_blank"

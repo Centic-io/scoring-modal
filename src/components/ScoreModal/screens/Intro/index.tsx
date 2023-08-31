@@ -39,8 +39,7 @@ export default function Intro({ setScreen }: ScreenComponentProps) {
         pt={2}
         textAlign={"center"}
       >
-        We will provide the credit score as well as its relative information
-        base on your wallet data
+        Explore the credit score and more insights of your wallet data
       </Typography>
       <Box
         sx={(theme) => ({
@@ -51,8 +50,8 @@ export default function Intro({ setScreen }: ScreenComponentProps) {
         })}
       >
         <Typography variant="body1" color={"text.secondary"}>
-          We won't share the wallet address or any other relative information to
-          the third party app, only credit score information will be provided.
+          We won't share the wallet address or any other related information to
+          the third-party app but credit score information.
         </Typography>
       </Box>
       <Button fullWidth variant="outlined" sx={{ mb: 2 }}>
