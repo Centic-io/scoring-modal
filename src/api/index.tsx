@@ -1,4 +1,4 @@
-const BASE_URL = "https://api-integrate.centic.io";
+const BASE_URL = "https://api-gateway.centic.io/staging/v1";
 
 type calculateScoreReturnType = {
   score: number;
@@ -14,17 +14,18 @@ type calculateScoreReturnType = {
 };
 export const calculateCustomScore = async (
   address: string,
-  apiKey: string
+  apiKey: string,
+  scoreId: string
 ): Promise<calculateScoreReturnType> => {
-  if (!address || !apiKey) {
-    throw Error("Invalid address or api key");
+  if (!address || !apiKey || !scoreId) {
+    throw Error("Invalid param");
   }
   try {
     const result = await fetch(
-      BASE_URL + "/centic/services/calculateCustomScore/" + address,
+      BASE_URL + "/centic/services/calculateCustomScore/" + address + `?scoreId=${scoreId}`,
       {
         headers: {
-          "x-apikey": apiKey,
+          apikey: apiKey,
         },
       }
     );
