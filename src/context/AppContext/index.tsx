@@ -9,12 +9,8 @@ type AppContextType = {
 };
 
 const LocalAppContext = React.createContext<AppContextType>(null as any);
-type Props = { children: React.ReactNode; apiKey?: string; setScore: any };
-export default function LocalAppContextProvider({
-  children,
-  apiKey,
-  setScore,
-}: Props) {
+type Props = { children: React.ReactNode; apiKey?: string; setScore: any; scoreId: string };
+export default function LocalAppContextProvider({ children, apiKey, setScore, scoreId }: Props) {
   const { address } = useAccount();
   const { signMessage } = useSignMessage();
   const calculateScore = useCallback(async () => {
@@ -22,7 +18,7 @@ export default function LocalAppContextProvider({
       return;
     }
     try {
-      const scoreResult = await calculateCustomScore(address, apiKey || "");
+      const scoreResult = await calculateCustomScore(address, apiKey || "", scoreId);
       setScore(scoreResult.score || 0);
     } catch (error) {
       setScore(0);
@@ -38,10 +34,6 @@ export default function LocalAppContextProvider({
     };
   }, [calculateScore, sign]);
 
-  return (
-    <LocalAppContext.Provider value={contextValue}>
-      {children}
-    </LocalAppContext.Provider>
-  );
+  return <LocalAppContext.Provider value={contextValue}>{children}</LocalAppContext.Provider>;
 }
 export const useLocalScoringContext = () => React.useContext(LocalAppContext);

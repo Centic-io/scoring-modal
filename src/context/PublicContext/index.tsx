@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import LocalAppContextProvider from "../AppContext";
 import AppTheme from "../../components/AppTheme";
 import ScoreModal from "../../components/ScoreModal";
@@ -17,15 +11,15 @@ export type PublicContextType = {
   close: () => void;
   score: number | undefined;
 };
-export const PublicContext = React.createContext<PublicContextType>(
-  null as any
-);
+export const PublicContext = React.createContext<PublicContextType>(null as any);
 export default function ScoringContextProvider({
   children,
   apiKey,
+  scoreId,
 }: {
   children: React.ReactNode;
   apiKey: string;
+  scoreId: string;
 }) {
   //set font dns
   useEffect(() => {
@@ -37,7 +31,6 @@ export default function ScoringContextProvider({
     link.setAttribute("rel", "stylesheet");
     document.head.appendChild(link);
   }, []);
-
   const [open, setOpen] = useState<boolean>(false);
   const [score, setScore] = useState<number | undefined>(undefined);
 
@@ -63,7 +56,7 @@ export default function ScoringContextProvider({
   return (
     <PublicContext.Provider value={contextValue}>
       <WagmiConfigWraper>
-        <LocalAppContextProvider apiKey={apiKey} setScore={setScore}>
+        <LocalAppContextProvider apiKey={apiKey} setScore={setScore} scoreId={scoreId}>
           <AppTheme>
             <ScoreModal />
           </AppTheme>
