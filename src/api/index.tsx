@@ -23,10 +23,10 @@ export const calculateCustomScore = async (
   }
   try {
     const result = await fetch(
-      BASE_URL + "/centic/services/calculateCustomScore/" + address + `?scoreId=${scoreId}`,
+      BASE_URL + "/centic-services/calculateCustomScore/" + address + `?scoreId=${scoreId}`,
       {
         headers: {
-          apikey: apiKey,
+          "x-apikey": apiKey,
         },
       }
     );
