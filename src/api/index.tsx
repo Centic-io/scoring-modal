@@ -1,4 +1,5 @@
-const BASE_URL = "https://api-gateway.centic.io/staging/v1";
+// const BASE_URL = "https://api-gateway.centic.io/staging/v1";
+const BASE_URL = "https://34.36.112.199.nip.io/v1";
 
 type calculateScoreReturnType = {
   score: number;
